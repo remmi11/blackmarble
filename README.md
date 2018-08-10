@@ -35,11 +35,6 @@ var blackMarble = layers.addImageryProvider(new Cesium.createTileMapServiceImage
 ```
 
 
-### Download Node ###
-
-Visit the [Downloads page](http://cesiumjs.org/downloads.html) or use the npm module:
-
-
 ### Install the required modules ###
 
 ```
@@ -55,4 +50,4 @@ node server.js
 
 ### Enjoy the fruit of your pain and suffering ###
 
-Visit the [Downloads page](http://localhost:8080/blackmarble) or use the npm module:
+Visit [http://localhost:8080/blackmarble/](http://localhost:8080/blackmarble/).
