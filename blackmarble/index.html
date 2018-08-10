@@ -8,7 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <!-- Make the application on mobile take up the full browser screen and disable user scaling. -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
-  <title>Blue Marble</title>
+  <title>Black Marble</title>
   <script src="../Build/Cesium/Cesium.js"></script>
   <style>
     @import url(../Build/Cesium/Widgets/widgets.css);
@@ -29,17 +29,11 @@
   <script>
     var viewer = new Cesium.Viewer('cesiumContainer');
 
-    // var layers = viewer.scene.imageryLayers;
-    // var blackMarble = layers.addImageryProvider(new Cesium.createTileMapServiceImageryProvider({
-    //     url : '.',
-    //     maximumLevel : 5,
-    //     credit : 'Black Marble imagery courtesy NASA Earth Observatory'
-    // }));
-
   var layers = viewer.scene.imageryLayers;
   var blackMarble = layers.addImageryProvider(new Cesium.createTileMapServiceImageryProvider({
       url : '.',
       maximumLevel : 8,
+      baseLayerPicker: false,
       credit : 'Black Marble imagery courtesy NASA Earth Observatory'
   }));
 

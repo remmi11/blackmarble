@@ -2,34 +2,34 @@
 clone the repository 
 
 ### open osgeo4w shell ###
-open osgeo4w shell and cd into bluemarble parent directory
+open osgeo4w shell and cd into blackmarble parent directory
 
 ### gdal_translate ###
-Instead of using EPSG:4326 we need to use the EPSG:3857 mercator projection...
+properly assign your file a projection...
 ```
-gdal_translate -of VRT -a_srs EPSG:3857 -gcp 0 0 -180 90 -gcp 21600 0 180 90 -gcp 21600 10800 180 -90 land_shallow_topo_21600.tif bluemarble1.vrt
+gdal_translate -of VRT -a_srs EPSG:4326 -gcp 0 0 -180 90 -gcp 2048 0 180 90 -gcp 2048 1024 180 -90 land_shallow_topo_2048.tif blackmarble1.vrt
 ```
 
 ### gdalwarp  ###
-warp the image for the cesium globe
+warp the image for the cesium globe...
 ```
-gdalwarp -of VRT -t_srs EPSG:3857 bluemarble1.vrt bluemarble2.vrt
+gdalwarp -of VRT -t_srs EPSG:4326 blackmarble1.vrt blackmarble2.vrt
 ```
 
 ### generate the tiles ###
-generate the tiles and save to bluemarble directory
+generate the png tiles and the bounding and projection information...
 ```
-gdal2tiles -z 1-5 bluemarble2.vrt bluemarble 
+gdal2tiles -p geodetic -z 1-5 blackmarble2.vrt blackmarble
 ```
 
 ### Add the Cesium createTileMapServiceImageryProvider code ###
-Notice the following bit of code inside bluemarble/index.html: 
+Notice the following bit of code inside blackmarble/index.html: 
 ```
 var layers = viewer.scene.imageryLayers;
 var blackMarble = layers.addImageryProvider(new Cesium.createTileMapServiceImageryProvider({
     url : '.',
+    maximumLevel : 8,
     baseLayerPicker: false,
-    maximumLevel : 5,
     credit : 'Black Marble imagery courtesy NASA Earth Observatory'
 }));
 ```
@@ -51,3 +51,8 @@ npm install
 ```
 node server.js
 ```
+
+
+### Enjoy the fruit of your pain and suffering ###
+
+Visit the [Downloads page](http://localhost:8080/blackmarble) or use the npm module:
