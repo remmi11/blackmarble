@@ -1,3 +1,5 @@
+*** Note: Some images may be better suited for mapping.  Natural Earth II is another great source, but much too large for this repo can be acquired [here](https://www.naturalearthdata.com/).
+
 ### clone the repository  ###
 clone the repository 
 
@@ -19,7 +21,7 @@ gdalwarp -of VRT -t_srs EPSG:4326 blackmarble1.vrt blackmarble2.vrt
 ### generate the tiles ###
 generate the png tiles and the bounding and projection information...
 ```
-gdal2tiles -p geodetic -z 1-5 blackmarble2.vrt blackmarble
+gdal2tiles -p geodetic -z 1-10 blackmarble2.vrt blackmarble
 ```
 
 ### Add the Cesium createTileMapServiceImageryProvider code ###
@@ -50,4 +52,4 @@ node server.js
 
 ### Enjoy the fruit of your pain and suffering ###
 
-Visit [http://localhost:8080/blackmarble/](http://localhost:8080/blackmarble/).
+Visit [http://localhost:8080/blackmarble/](http://localhost:8080/blackmarble/).  https://www.naturalearthdata.com/

@@ -1,30 +1,18 @@
-gdal_translate -of VRT -a_srs EPSG:4326 -gcp 0 0 -180 90 -gcp 21600 0 180 90 -gcp 21600 10800 180 -90 land_shallow_topo_2048.tif bluemarble1.vrt
-gdalwarp -of VRT -t_srs EPSG:4326 bluemarble1.vrt bluemarble2.vrt
-gdal2tiles.py -p geodetic -z 1-5 bluemarble2.vrt bluemarble
+gdal_translate -of VRT -a_srs EPSG:4326 -gcp 0 0 -180 90 -gcp 2048 0 180 90 -gcp 2048 1024 180 -90 land_shallow_topo_2048.tif blackmarble1.vrt
 
-gdal_translate -of VRT -a_srs EPSG:3857 -gcp 0 0 -180 90 -gcp 21600 0 180 90 -gcp 21600 10800 180 -90 land_shallow_topo_2048.tif bluemarble1.vrt
+gdalwarp -of VRT -t_srs EPSG:4326 blackmarble1.vrt blackmarble2.vrt
 
-gdalwarp -of VRT -t_srs EPSG:3857 bluemarble1.vrt bluemarble2.vrt
-
-gdal2tiles.py -p geodetic -z 1-5 bluemarble2.vrt bluemarble
-
-
-gdal2tiles.py bluemarble2.vrt
+gdal2tiles -p geodetic -z 1-5 blackmarble2.vrt blackmarble
 
 
 
+gdal_translate -of VRT -a_srs EPSG:3857 -gcp 0 0 -180 90 -gcp 2048 0 180 90 -gcp 2048 1024 180 -90 land_shallow_topo_2048.tif blackmarble1.vrt
+
+gdalwarp -of VRT -t_srs EPSG:3857 blackmarble1.vrt blackmarble2.vrt
+
+gdal2tiles -p geodetic -z 1-5 blackmarble2.vrt blackmarble
 
 
-gdal_translate -of VRT -a_srs EPSG:3857 -gcp 0 0 -180 90 -gcp 21600 0 180 90 -gcp 21600 10800 180 -90 land_shallow_topo_2048.tif bluemarble1.vrt
-
-gdalwarp -of VRT -t_srs EPSG:3857 bluemarble1.vrt bluemarble2.vrt
-
-gdal2tiles -p geodetic -z 1-5 bluemarble2.vrt bluemarble
-
-
-
-gdal_translate -of VRT -a_srs EPSG:3857 -gcp 0 0 -180 90 -gcp 21600 0 180 90 -gcp 21600 10800 180 -90 land_shallow_topo_2048.tif bluemarble1.vrt
-
-gdalwarp -of VRT -t_srs EPSG:3857 bluemarble1.vrt bluemarble2.vrt
-
-gdal2tiles -p geodetic -z 1-5 bluemarble2.vrt bluemarble
+gdal_translate -of VRT -a_srs EPSG:3857 -gcp 0 0 -180 90 -gcp 21600 0 180 90 -gcp 21600 10800 180 -90 world_200401.jpg blackmarble1.vrt
+gdalwarp -of VRT -t_srs EPSG:3857 blackmarble1.vrt blackmarble2.vrt
+gdal2tiles.py blackmarble2.vrt
